@@ -22,6 +22,9 @@ NSIS_agent_setup/OCS-NG-Windows-Agent-Setup.log
 NSIS_agent_setup/SetACL.exe
 ComHTTP/HTTP.APS
 
+# Ignore results from cross builds with Mingw-w32.
+*.o
+
 # Ignore results from MS Visual Studio builds.
 logon/OcsLogon.exe
 ComHTTP/HTTP.APS
