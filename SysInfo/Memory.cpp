@@ -14,8 +14,8 @@
 
 #include "stdafx.h"
 
-#include "Windows.h"
-#include "Winbase.h" 
+#include "windows.h"
+#include "winbase.h" 
 #include "SysInfoClasses.h"
 #include "Memory.h"
 #include <VersionHelpers.h>

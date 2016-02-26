@@ -23,7 +23,7 @@
 #include "resource.h"		// main symbols
 
 #include "OcsWmi.h"
-#include "SetupApi.h"
+#include "setupapi.h"
 #include "SysInfoClasses.h"
 #include "AccessLog.h"
 #include "Bios.h"

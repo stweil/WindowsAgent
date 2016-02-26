@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include "Ocsinventory Front Classes.h"
+#include "OCSInventory Front Classes.h"
 #include "Flate.h"
 
 class OCSINVENTORYFRONT_API CZip  

@@ -19,7 +19,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "Ocsinventory Front Classes.h"
+#include "OCSInventory Front Classes.h"
 #include "Markup.h"
 #include "Zip.h"
 #include "OcsUtils.h"

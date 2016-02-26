@@ -1,123 +1,49 @@
-all:
+CROSS_PREFIX=i686-w64-mingw32-
+
+CC=$(CROSS_PREFIX)gcc
+CXX=$(CROSS_PREFIX)g++
+CXXFLAGS=-I../Agent -I../OcsWmi -I../SysInfo -I.
+
+objects=
+objects+=commonDownload.o
+objects+=ComProvider.o
+objects+=Config.o
+objects+=ConnexionAbstract.o
+objects+=ConnexionLocal.o
+objects+=Deviceid.o
+objects+=DownloadRequest.o
+objects+=DownloadResponse.o
+objects+=ExecCommand.o
+objects+=FilePackageHistory.o
+objects+=Flate.o
+objects+=InventoryRequest.o
+objects+=InventoryResponse.o
+objects+=Log.o
+objects+=MapStringToStringArray.o
+objects+=Markup.o
+objects+=NotifyUser.o
+objects+=OCSInventory Front.o
+objects+=OCSInventoryState.o
+objects+=OcsUtils.o
+objects+=PrologRequest.o
+objects+=PrologResponse.o
+objects+=Request.o
+objects+=RequestAbstract.o
+objects+=Response.o
+objects+=ResponseAbstract.o
+objects+=ServerConfig.o
+objects+=Singleton.o
+objects+=stdafx.o
+#~ objects+=RelativePath="..\External_Deps\tinyxml\tinystr.o
+#~ objects+=RelativePath="..\External_Deps\tinyxml\tinyxml.o
+#~ objects+=RelativePath="..\External_Deps\tinyxml\tinyxmlerror.o
+#~ objects+=RelativePath="..\External_Deps\tinyxml\tinyxmlparser.o
+objects+=XMLInteract.o
+objects+=Zip.o
+
+all: $(objects)
 	@echo $(pwd)
 
-#~ <Configurations>
-	#~ <Configuration
-		#~ >
-		#~ <Tool
-			#~ Name="VCCLCompilerTool"
-			#~ Optimization="0"
-			#~ AdditionalIncludeDirectories="&quot;..\External_Deps\zlib-1.2.8&quot;;&quot;..\External_Deps\openssl-1.0.0n\inc32&quot;;..\External_Deps\tinyxml;../OcsWmi;..\Sysinfo"
-			#~ PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_USRDLL;_AFX_NO_DB_SUPPORT;_AFX_NO_DAO_SUPPORT;_CRT_SECURE_NO_DEPRECATE;_BIND_TO_CURRENT_VCLIBS_VERSION;OCSINVENTORYFRONT_EXPORTS"
-			#~ MinimalRebuild="true"
-			#~ BasicRuntimeChecks="3"
-			#~ RuntimeLibrary="3"
-			#~ UsePrecompiledHeader="0"
-			#~ WarningLevel="3"
-			#~ Detect64BitPortabilityProblems="false"
-			#~ DebugInformationFormat="4"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManagedResourceCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCResourceCompilerTool"
-			#~ PreprocessorDefinitions="_DEBUG"
-			#~ Culture="1033"
-			#~ AdditionalIncludeDirectories="$(IntDir)"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPreLinkEventTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCLinkerTool"
-			#~ AdditionalDependencies="..\External_Deps\zdll.lib ..\External_Deps\libeay32.lib WtsApi32.lib Userenv.lib"
-			#~ LinkIncremental="2"
-			#~ ModuleDefinitionFile=""
-			#~ GenerateDebugInformation="true"
-			#~ SubSystem="2"
-			#~ RandomizedBaseAddress="1"
-			#~ DataExecutionPrevention="0"
-			#~ TargetMachine="1"
-		#~ />
-		#~ <Tool
-			#~ Name="VCALinkTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManifestTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXDCMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCBscMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCFxCopTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCAppVerifierTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPostBuildEventTool"
-		#~ />
-	#~ </Configuration>
-	#~ <Configuration
-		#~ Name="Debug|x64"
-		#~ ConfigurationType="1"
-		#~ >
-		#~ <Tool
-			#~ Name="VCPreBuildEventTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCCustomBuildTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXMLDataGeneratorTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCWebServiceProxyGeneratorTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCMIDLTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCCLCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManagedResourceCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCResourceCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPreLinkEventTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCLinkerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCALinkTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManifestTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXDCMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCBscMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCFxCopTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCAppVerifierTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPostBuildEventTool"
-		#~ />
-	#~ </Configuration>
 	#~ <Configuration
 		#~ Name="Release|Win32"
 		#~ OutputDirectory="$(SolutionDir)$(ConfigurationName)"
@@ -127,18 +53,6 @@ all:
 		#~ CharacterSet="1"
 		#~ WholeProgramOptimization="1"
 		#~ >
-		#~ <Tool
-			#~ Name="VCPreBuildEventTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCCustomBuildTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXMLDataGeneratorTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCWebServiceProxyGeneratorTool"
-		#~ />
 		#~ <Tool
 			#~ Name="VCMIDLTool"
 			#~ PreprocessorDefinitions="NDEBUG"
@@ -156,16 +70,10 @@ all:
 			#~ CallingConvention="0"
 		#~ />
 		#~ <Tool
-			#~ Name="VCManagedResourceCompilerTool"
-		#~ />
-		#~ <Tool
 			#~ Name="VCResourceCompilerTool"
 			#~ PreprocessorDefinitions="NDEBUG"
 			#~ Culture="1033"
 			#~ AdditionalIncludeDirectories="$(IntDir)"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPreLinkEventTool"
 		#~ />
 		#~ <Tool
 			#~ Name="VCLinkerTool"
@@ -180,266 +88,9 @@ all:
 			#~ DataExecutionPrevention="0"
 			#~ TargetMachine="1"
 		#~ />
-		#~ <Tool
-			#~ Name="VCALinkTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManifestTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXDCMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCBscMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCFxCopTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCAppVerifierTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPostBuildEventTool"
-		#~ />
 	#~ </Configuration>
-	#~ <Configuration
-		#~ Name="Release|x64"
-		#~ ConfigurationType="1"
-		#~ >
-		#~ <Tool
-			#~ Name="VCPreBuildEventTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCCustomBuildTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXMLDataGeneratorTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCWebServiceProxyGeneratorTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCMIDLTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCCLCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManagedResourceCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCResourceCompilerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPreLinkEventTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCLinkerTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCALinkTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCManifestTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCXDCMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCBscMakeTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCFxCopTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCAppVerifierTool"
-		#~ />
-		#~ <Tool
-			#~ Name="VCPostBuildEventTool"
-		#~ />
-	#~ </Configuration>
-#~ </Configurations>
-#~ <References>
-#~ </References>
+
 #~ <Files>
-	#~ <Filter
-		#~ Name="Source Files"
-		#~ Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
-		#~ UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
-		#~ >
-		#~ <File
-			#~ RelativePath=".\commonDownload.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\ComProvider.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Config.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\ConnexionAbstract.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\ConnexionLocal.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Deviceid.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\DownloadRequest.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\DownloadResponse.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\ExecCommand.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\FilePackageHistory.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\flate.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\InventoryRequest.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\InventoryResponse.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Log.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\MapStringToStringArray.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Markup.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\NotifyUser.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\OCSInventory Front.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\OCSInventoryState.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\OcsUtils.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\PrologRequest.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\PrologResponse.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Request.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\RequestAbstract.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Response.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\ResponseAbstract.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\ServerConfig.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Singleton.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\stdafx.cpp"
-			#~ >
-			#~ <FileConfiguration
-				#~ Name="Debug|Win32"
-				#~ >
-				#~ <Tool
-					#~ Name="VCCLCompilerTool"
-					#~ UsePrecompiledHeader="1"
-				#~ />
-			#~ </FileConfiguration>
-			#~ <FileConfiguration
-				#~ Name="Debug|x64"
-				#~ >
-				#~ <Tool
-					#~ Name="VCCLCompilerTool"
-					#~ UsePrecompiledHeader="1"
-				#~ />
-			#~ </FileConfiguration>
-			#~ <FileConfiguration
-				#~ Name="Release|Win32"
-				#~ >
-				#~ <Tool
-					#~ Name="VCCLCompilerTool"
-					#~ UsePrecompiledHeader="1"
-				#~ />
-			#~ </FileConfiguration>
-			#~ <FileConfiguration
-				#~ Name="Release|x64"
-				#~ >
-				#~ <Tool
-					#~ Name="VCCLCompilerTool"
-					#~ UsePrecompiledHeader="1"
-				#~ />
-			#~ </FileConfiguration>
-		#~ </File>
-		#~ <File
-			#~ RelativePath="..\External_Deps\tinyxml\tinystr.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath="..\External_Deps\tinyxml\tinyxml.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath="..\External_Deps\tinyxml\tinyxmlerror.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath="..\External_Deps\tinyxml\tinyxmlparser.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\XMLInteract.cpp"
-			#~ >
-		#~ </File>
-		#~ <File
-			#~ RelativePath=".\Zip.cpp"
-			#~ >
-		#~ </File>
-	#~ </Filter>
 	#~ <Filter
 		#~ Name="Header Files"
 		#~ Filter="h;hpp;hxx;hm;inl;inc;xsd"

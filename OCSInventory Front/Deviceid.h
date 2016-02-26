@@ -21,7 +21,7 @@
 #include "Log.h"
 #include "Singleton.h"
 #include "Zip.h"
-#include "sysinfo.h"
+#include "SysInfo.h"
 
 #define DEVICEID_DAT_FILE			_T( "ocsinventory.dat")
 #define MAC_STRING_LENGTH			17	// XX:XX:XX:XX:XX:XX

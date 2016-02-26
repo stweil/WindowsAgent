@@ -14,7 +14,7 @@
 
 #include "stdafx.h"
 #include "Deviceid.h"
-#include "OcsUTils.h"
+#include "OcsUtils.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

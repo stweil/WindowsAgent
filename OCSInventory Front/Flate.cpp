@@ -13,7 +13,7 @@
 
 #include "stdafx.h"
 #include "zlib.h"
-#include "flate.h"
+#include "Flate.h"
 #include "ByteArrayStream.h"
 
 #ifdef _DEBUG
